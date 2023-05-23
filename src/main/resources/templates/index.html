@@ -1,12 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>School Management Application</title>
-</head>
-<body>
-    <h1>School Management App</h1>
-</body>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <nav th:replace="layout :: sma-header"></nav>
+  <body>
+    <nav th:replace="layout :: sma-body"></nav>
+    <br />
+    <br />
+    <br />
+
+    <h2>Classroom</h2>
+    <div class="container">
+      <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th>Classroom Name</th>
+            <th>Classroom Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each=" classroom : ${classrooms}">
+            <td th:text="${classroom.classroomName}"></td>
+            <td th:text="${classroom.classroomEmail}"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br />
+    <br />
+    <br />
+    <h2>Teacher</h2>
+    <div class="container">
+      <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th>Teacher Name</th>
+            <th>Teacher Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each=" teacher : ${teachers}">
+            <td th:text="${teacher.teacherName}"></td>
+            <td th:text="${teacher.classroomEmail}"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br />
+    <br />
+    <br />
+    <h2>Student</h2>
+    <div class="container">
+      <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th>Student Name</th>
+            <th>Student Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each=" student : ${students}">
+            <td th:text="${student.studentName}"></td>
+            <td th:text="${student.studentEmail}"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
 </html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <nav th:replace="layout :: sma-header"></nav>
+  <body>
+    <nav th:replace="layout :: sma-body"></nav>
+    <h2>Teacher</h2>
+    <div class="container">
+        <form action="/teachers/save" th:object="${teacher}" method="POST">
+          <input type="text" th:field="${teacher.teacherName}" />
+          <input type="email" th:field="${teacher.teacherEmail}" />
+          <button type="submit">Create teacher</button>
+        </form>
+      </div>
+  
+      <br>
+      <br>
+      <div class="container">
+        <table class="table table-bordered table-striped">
+          <thead class="thead-dark">
+            <tr>
+             <th> Teacher Name </th>          
+              <th> Teacher Email </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each=" teacher : ${teachers}">
+              <td th:text="${teacher.teacherName}"></td>
+              <td th:text="${teacher.teacherEmail}"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+</body>
+</html>
