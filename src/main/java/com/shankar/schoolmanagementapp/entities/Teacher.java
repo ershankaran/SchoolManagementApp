@@ -9,6 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 
 @Entity
@@ -22,7 +23,9 @@ public class Teacher {
     
     @ManyToMany(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH,CascadeType.PERSIST},
     fetch = FetchType.LAZY)
-    @JoinColumn(name="classroom_id")
+    @JoinTable( name="classroom_teacher",
+    joinColumns = @JoinColumn(name="teacher_id"),
+    inverseJoinColumns =  @JoinColumn(name="classroom_id"))
     private List<Classroom> classroom;
 
     public Teacher() {
