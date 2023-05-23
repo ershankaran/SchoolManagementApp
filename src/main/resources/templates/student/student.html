@@ -5,30 +5,30 @@
     <nav th:replace="layout :: sma-body"></nav>
     <h2>Students</h2>
     <div class="container">
-        <form action="/students/save" th:object="${student}" method="POST">
-          <input type="text" th:field="${student.studentName}" />
-          <input type="email" th:field="${student.studentEmail}" />
-          <button type="submit">Create student</button>
-        </form>
-      </div>
-  
-      <br>
-      <br>
-      <div class="container">
-        <table class="table table-bordered table-striped">
-          <thead class="thead-dark">
-            <tr>
-             <th> Student Name </th>          
-              <th> Student Email </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr th:each=" student : ${students}">
-              <td th:text="${student.studentName}"></td>
-              <td th:text="${student.studentEmail}"></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-</body>
+      <form action="/students/save" th:object="${student}" method="POST">
+        <input type="text" th:field="${student.studentName}" />
+        <input type="email" th:field="${student.studentEmail}" />
+        <button type="submit">Create student</button>
+      </form>
+    </div>
+
+    <br />
+    <br />
+    <div class="container">
+      <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th>Student Name</th>
+            <th>Student Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each=" student : ${students}">
+            <td th:text="${student.studentName}"></td>
+            <td th:text="${student.studentEmail}"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
 </html>
