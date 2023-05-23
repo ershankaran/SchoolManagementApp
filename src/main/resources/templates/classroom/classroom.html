@@ -8,18 +8,32 @@
       <form action="/classrooms/save" th:object="${classroom}" method="POST">
         <input type="text" th:field="${classroom.classroomName}" />
         <input type="email" th:field="${classroom.classroomEmail}" />
+        <select th:field="*{students}" multiple="multiple">
+          <option
+            th:each=" student : ${students}"
+            th:value="${student.studentId}"
+            th:text="${student.studentName}"
+          ></option>
+        </select>
+        <select th:field="*{teachers}" multiple="multiple">
+          <option
+            th:each=" teacher : ${teachers}"
+            th:value="${teacher.teacherId}"
+            th:text="${teacher.teacherName}"
+          ></option>
+        </select>
         <button type="submit">Create Classroom</button>
       </form>
     </div>
 
-    <br>
-    <br>
+    <br />
+    <br />
     <div class="container">
       <table class="table table-bordered table-striped">
         <thead class="thead-dark">
           <tr>
-           <th> Classroom Name </th>          
-            <th> Classroom Email </th>
+            <th>Classroom Name</th>
+            <th>Classroom Email</th>
           </tr>
         </thead>
         <tbody>
