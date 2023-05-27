@@ -27,7 +27,7 @@ for(var i=0; i < arrayLength2; i++){
 
 // For a pie chart
 new Chart(document.getElementById("myPieChart"), {
-    type: 'pie',
+    type: 'bar',
     // The data for our dataset
     data : {
         labels:labelData,
@@ -55,7 +55,7 @@ new Chart(document.getElementById("myPieChart"), {
 
 
 new Chart(document.getElementById("myPieChart2"), {
-    type: 'pie',
+    type: 'bar',
     // The data for our dataset
     data : {
         labels:labelData2,
