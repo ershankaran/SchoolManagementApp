@@ -44,13 +44,18 @@ new Chart(document.getElementById("myPieChart"), {
       },
 
     // Configuration options go here
-    // options: {
-    // 	title: {
-    // 		display: true,
-    // 		text: 'Project Statuses'
-    // 	}
+    options: {
+    	title: {
+    		display: true,
+    		text: 'Classroom Student'        
+    	},
+      scale: {
+        ticks: {
+          precision: 0
+        }
+      }
     	
-    // }
+    }
 });
 
 
@@ -72,13 +77,18 @@ new Chart(document.getElementById("myPieChart2"), {
       },
 
     // Configuration options go here
-    // options: {
-    // 	title: {
-    // 		display: true,
-    // 		text: 'Project Statuses'
-    // 	}
+    options: {
+    	title: {
+    		display: true,
+    		text: 'Project Statuses'
+    	},
+      scale: {
+        ticks: {
+          precision: 0
+        }
+      }
     	
-    // }
+    }
 });
 
 // "[{"value": 1, "label": "COMPLETED"},{"value": 2, "label": "INPROGRESS"},{"value": 1, "label": "NOTSTARTED"}]"
