@@ -1,0 +1,9 @@
+when a spring application starts , it internally starts a spring context and whenever object needed, 
+spring automatically injects the beans into the context. Autowired is an annotation / marker, points
+to the spring to inject the object inside context
+
+
+java -jar -DenvVersionNumber=0.2.1 schoolmanagementapp-0.0.1-SNAPSHOT.jar 
+
+add the below to the ~/.bashrc file
+export envVersionNumber=2.1.23

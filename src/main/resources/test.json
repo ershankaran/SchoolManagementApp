@@ -1,0 +1,16 @@
+ {
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "ApiApplication",
+            "request": "launch",
+            "mainClass": "io.sample.api.ApiApplication",
+            "projectName": "api",
+            "env": {
+                "MONGO_HOST": "localhost",
+                "MONGO_PORT": "27020"
+            }
+        }
+    ]
+}
