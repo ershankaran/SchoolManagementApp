@@ -3,6 +3,7 @@ package com.shankar.schoolmanagementapp.Controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +21,9 @@ import com.shankar.schoolmanagementapp.entities.Teacher;
 
 @Controller
 public class HomeController {
+
+    @Value("${version}")
+    private String ver;
     
     @Autowired
     StudentRepository studentRepo;
@@ -47,6 +51,7 @@ public class HomeController {
         model.addAttribute("classrooms", classrooms);
         model.addAttribute("getclassroomStudentCount", getclassroomStudentCount);
         model.addAttribute("getclassroomTeacherCount", getclassroomTeacherCount);
+        model.addAttribute("versionNumber", ver);
         return "index.html";
     }
 }
