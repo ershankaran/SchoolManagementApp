@@ -16,3 +16,181 @@ delete from classroom_teacher;
 delete from teacher;
 
 delete from classroom;
+
+-- alter sequence classroom_seq restart with 1;
+
+-- alter sequence student_seq restart with 1;
+
+-- alter sequence teacher_seq restart with 1;
+
+insert into classroom( classroom_name,Classroom_email) values ('Class-X','Classroomx@school.org');
+insert into classroom( classroom_name,Classroom_email) values ('Class-XI','Classroomxi@school.org');
+insert into classroom( classroom_name,Classroom_email) values ('Class-XII','Classroomxii@school.org');
+
+insert into teacher( teacher_name,teacher_email)values ('Teacher1','Teacher1@school.org');
+insert into teacher( teacher_name,teacher_email)values ('Teacher2','Teacher2@school.org');
+insert into teacher( teacher_name,teacher_email)values ('Teacher3','Teacher3@school.org');
+insert into teacher( teacher_name,teacher_email)values ('Teacher4','Teacher4@school.org');
+insert into teacher( teacher_name,teacher_email)values ('Teacher5','Teacher5@school.org');
+insert into teacher( teacher_name,teacher_email)values ('Teacher6','Teacher6@school.org');
+insert into teacher( teacher_name,teacher_email)values ('Teacher7','Teacher7@school.org');
+insert into teacher( teacher_name,teacher_email)values ('Teacher8','Teacher8@school.org');
+insert into teacher( teacher_name,teacher_email)values ('Teacher9','Teacher9@school.org');
+insert into teacher( teacher_name,teacher_email)values ('Teacher10','Teacher10@school.org');
+insert into teacher( teacher_name,teacher_email)values ('Teacher11','Teacher11@school.org');
+insert into teacher( teacher_name,teacher_email)values ('Teacher12','Teacher12@school.org');
+insert into teacher( teacher_name,teacher_email)values ('Teacher13','Teacher13@school.org');
+insert into teacher( teacher_name,teacher_email)values ('Teacher14','Teacher14@school.org');
+insert into teacher( teacher_name,teacher_email)values ('Teacher15','Teacher15@school.org');
+insert into teacher( teacher_name,teacher_email)values ('Teacher16','Teacher16@school.org');
+insert into teacher( teacher_name,teacher_email)values ('Teacher17','Teacher17@school.org');
+
+
+insert into student( student_name, student_email)  values ('student1','student1@school.org');
+insert into student( student_name, student_email)  values ('student2','student2@school.org');
+insert into student( student_name, student_email)  values ('student3','student3@school.org');
+insert into student( student_name, student_email)  values ('student4','student4@school.org');
+insert into student( student_name, student_email)  values ('student5','student5@school.org');
+insert into student( student_name, student_email)  values ('student6','student6@school.org');
+insert into student( student_name, student_email)  values ('student7','student7@school.org');
+insert into student( student_name, student_email)  values ('student8','student8@school.org');
+insert into student( student_name, student_email)  values ('student9','student9@school.org');
+insert into student( student_name, student_email)  values ('student10','student10@school.org');
+insert into student( student_name, student_email)  values ('student11','student11@school.org');
+insert into student( student_name, student_email)  values ('student12','student12@school.org');
+insert into student( student_name, student_email)  values ('student13','student13@school.org');
+insert into student( student_name, student_email)  values ('student14','student14@school.org');
+insert into student( student_name, student_email)  values ('student15','student15@school.org');
+insert into student( student_name, student_email)  values ('student16','student16@school.org');
+insert into student( student_name, student_email)  values ('student17','student17@school.org');
+insert into student( student_name, student_email)  values ('student18','student18@school.org');
+insert into student( student_name, student_email)  values ('student19','student19@school.org');
+insert into student( student_name, student_email)  values ('student20','student20@school.org');
+insert into student( student_name, student_email)  values ('student21','student21@school.org');
+insert into student( student_name, student_email)  values ('student22','student22@school.org');
+insert into student( student_name, student_email)  values ('student23','student23@school.org');
+insert into student( student_name, student_email)  values ('student24','student24@school.org');
+insert into student( student_name, student_email)  values ('student25','student25@school.org');
+insert into student( student_name, student_email)  values ('student26','student26@school.org');
+insert into student( student_name, student_email)  values ('student27','student27@school.org');
+insert into student( student_name, student_email)  values ('student28','student28@school.org');
+insert into student( student_name, student_email)  values ('student29','student29@school.org');
+insert into student( student_name, student_email)  values ('student30','student30@school.org');
+insert into student( student_name, student_email)  values ('student31','student31@school.org');
+insert into student( student_name, student_email)  values ('student32','student32@school.org');
+insert into student( student_name, student_email)  values ('student33','student33@school.org');
+insert into student( student_name, student_email)  values ('student34','student34@school.org');
+insert into student( student_name, student_email)  values ('student35','student35@school.org');
+insert into student( student_name, student_email)  values ('student36','student36@school.org');
+insert into student( student_name, student_email)  values ('student37','student37@school.org');
+insert into student( student_name, student_email)  values ('student38','student38@school.org');
+insert into student( student_name, student_email)  values ('student39','student39@school.org');
+insert into student( student_name, student_email)  values ('student40','student40@school.org');
+insert into student( student_name, student_email)  values ('student41','student41@school.org');
+insert into student( student_name, student_email)  values ('student42','student42@school.org');
+insert into student( student_name, student_email)  values ('student43','student43@school.org');
+insert into student( student_name, student_email)  values ('student44','student44@school.org');
+insert into student( student_name, student_email)  values ('student45','student45@school.org');
+insert into student( student_name, student_email)  values ('student46','student46@school.org');
+insert into student( student_name, student_email)  values ('student47','student47@school.org');
+insert into student( student_name, student_email)  values ('student48','student48@school.org');
+insert into student( student_name, student_email)  values ('student49','student49@school.org');
+insert into student( student_name, student_email)  values ('student50','student50@school.org');
+insert into student( student_name, student_email)  values ('student51','student51@school.org');
+insert into student( student_name, student_email)  values ('student52','student52@school.org');
+insert into student( student_name, student_email)  values ('student53','student53@school.org');
+insert into student( student_name, student_email)  values ('student54','student54@school.org');
+insert into student( student_name, student_email)  values ('student55','student55@school.org');
+insert into student( student_name, student_email)  values ('student56','student56@school.org');
+insert into student( student_name, student_email)  values ('student57','student57@school.org');
+insert into student( student_name, student_email)  values ('student58','student58@school.org');
+insert into student( student_name, student_email)  values ('student59','student59@school.org');
+insert into student( student_name, student_email)  values ('student60','student60@school.org');
+insert into student( student_name, student_email)  values ('student61','student61@school.org');
+insert into student( student_name, student_email)  values ('student62','student62@school.org');
+insert into student( student_name, student_email)  values ('student63','student63@school.org');
+insert into student( student_name, student_email)  values ('student64','student64@school.org');
+insert into student( student_name, student_email)  values ('student65','student65@school.org');
+insert into student( student_name, student_email)  values ('student66','student66@school.org');
+insert into student( student_name, student_email)  values ('student67','student67@school.org');
+insert into student( student_name, student_email)  values ('student68','student68@school.org');
+insert into student( student_name, student_email)  values ('student69','student69@school.org');
+insert into student( student_name, student_email)  values ('student70','student70@school.org');
+insert into student( student_name, student_email)  values ('student71','student71@school.org');
+insert into student( student_name, student_email)  values ('student72','student72@school.org');
+insert into student( student_name, student_email)  values ('student73','student73@school.org');
+insert into student( student_name, student_email)  values ('student74','student74@school.org');
+insert into student( student_name, student_email)  values ('student75','student75@school.org');
+insert into student( student_name, student_email)  values ('student76','student76@school.org');
+insert into student( student_name, student_email)  values ('student77','student77@school.org');
+insert into student( student_name, student_email)  values ('student78','student78@school.org');
+insert into student( student_name, student_email)  values ('student79','student79@school.org');
+insert into student( student_name, student_email)  values ('student80','student80@school.org');
+insert into student( student_name, student_email)  values ('student81','student81@school.org');
+insert into student( student_name, student_email)  values ('student82','student82@school.org');
+insert into student( student_name, student_email)  values ('student83','student83@school.org');
+insert into student( student_name, student_email)  values ('student84','student84@school.org');
+insert into student( student_name, student_email)  values ('student85','student85@school.org');
+insert into student( student_name, student_email)  values ('student86','student86@school.org');
+insert into student( student_name, student_email)  values ('student87','student87@school.org');
+insert into student( student_name, student_email)  values ('student88','student88@school.org');
+insert into student( student_name, student_email)  values ('student89','student89@school.org');
+insert into student( student_name, student_email)  values ('student90','student90@school.org');
+insert into student( student_name, student_email)  values ('student91','student91@school.org');
+insert into student( student_name, student_email)  values ('student92','student92@school.org');
+insert into student( student_name, student_email)  values ('student93','student93@school.org');
+insert into student( student_name, student_email)  values ('student94','student94@school.org');
+insert into student( student_name, student_email)  values ('student95','student95@school.org');
+insert into student( student_name, student_email)  values ('student96','student96@school.org');
+insert into student( student_name, student_email)  values ('student97','student97@school.org');
+insert into student( student_name, student_email)  values ('student98','student98@school.org');
+insert into student( student_name, student_email)  values ('student99','student99@school.org');
+insert into student( student_name, student_email)  values ('student100','student100@school.org');
+insert into student( student_name, student_email)  values ('student101','student101@school.org');
+insert into student( student_name, student_email)  values ('student102','student102@school.org');
+insert into student( student_name, student_email)  values ('student103','student103@school.org');
+insert into student( student_name, student_email)  values ('student104','student104@school.org');
+insert into student( student_name, student_email)  values ('student105','student105@school.org');
+insert into student( student_name, student_email)  values ('student106','student106@school.org');
+insert into student( student_name, student_email)  values ('student107','student107@school.org');
+insert into student( student_name, student_email)  values ('student108','student108@school.org');
+insert into student( student_name, student_email)  values ('student109','student109@school.org');
+insert into student( student_name, student_email)  values ('student110','student110@school.org');
+insert into student( student_name, student_email)  values ('student111','student111@school.org');
+insert into student( student_name, student_email)  values ('student112','student112@school.org');
+insert into student( student_name, student_email)  values ('student113','student113@school.org');
+insert into student( student_name, student_email)  values ('student114','student114@school.org');
+insert into student( student_name, student_email)  values ('student115','student115@school.org');
+insert into student( student_name, student_email)  values ('student116','student116@school.org');
+insert into student( student_name, student_email)  values ('student117','student117@school.org');
+insert into student( student_name, student_email)  values ('student118','student118@school.org');
+insert into student( student_name, student_email)  values ('student119','student119@school.org');
+insert into student( student_name, student_email)  values ('student120','student120@school.org');
+
+insert into classroom_teacher ( classroom_id,teacher_id) values (1,4);
+insert into classroom_teacher ( classroom_id,teacher_id) values (1,7);
+insert into classroom_teacher ( classroom_id,teacher_id) values (1,8);
+insert into classroom_teacher ( classroom_id,teacher_id) values (2,9);
+insert into classroom_teacher ( classroom_id,teacher_id) values (2,10);
+insert into classroom_teacher ( classroom_id,teacher_id) values (2,11);
+insert into classroom_teacher ( classroom_id,teacher_id) values (2,12);
+insert into classroom_teacher ( classroom_id,teacher_id) values (2,13);
+insert into classroom_teacher ( classroom_id,teacher_id) values (3,11);
+insert into classroom_teacher ( classroom_id,teacher_id) values (3,12);
+insert into classroom_teacher ( classroom_id,teacher_id) values (3,13);
+insert into classroom_teacher ( classroom_id,teacher_id) values (3,17);
+insert into classroom_teacher ( classroom_id,teacher_id) values (3,1);
+insert into classroom_teacher ( classroom_id,teacher_id) values (3,2);
+insert into classroom_teacher ( classroom_id,teacher_id) values (3,3);
+
+update student
+set classroom_id=1
+where student_id < 26
+
+update student
+set classroom_id=2
+where student_id between 26 and 75
+
+update student
+set classroom_id=3
+where student_id >75
