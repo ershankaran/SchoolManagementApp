@@ -12,12 +12,14 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.SequenceGenerator;
 
 @Entity
 public class Classroom {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "classroom_seq")
+    @SequenceGenerator(name = "classroom_seq",sequenceName = "classroom_seq", allocationSize = 1)
     private int classroomId;
     private String classroomName;
     private String classroomEmail;

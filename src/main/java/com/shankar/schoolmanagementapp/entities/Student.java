@@ -8,13 +8,15 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.SequenceGenerator;
 
 @Entity
 public class Student {
     
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "student_seq")
+    @SequenceGenerator(name = "student_seq",sequenceName = "student_seq", allocationSize = 1)
     private int studentId;
     private String studentName;
     private String studentEmail;

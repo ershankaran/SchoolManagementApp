@@ -7,3 +7,12 @@ java -jar -DenvVersionNumber=0.2.1 schoolmanagementapp-0.0.1-SNAPSHOT.jar
 
 add the below to the ~/.bashrc file
 export envVersionNumber=2.1.23
+
+execute the below in the exact sequence
+delete from student;
+
+delete from classroom_teacher;
+
+delete from teacher;
+
+delete from classroom;
