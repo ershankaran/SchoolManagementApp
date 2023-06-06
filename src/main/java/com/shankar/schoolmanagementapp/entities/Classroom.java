@@ -44,6 +44,11 @@ public class Classroom {
         this.teachers = teachers;
     }
 
+    public Classroom(String classroomName, String classroomEmail) {
+        this.classroomName = classroomName;
+        this.classroomEmail = classroomEmail;
+    }
+
     public int getClassroomId() {
         return classroomId;
     }
