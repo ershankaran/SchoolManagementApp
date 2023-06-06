@@ -1,0 +1,4 @@
+DROP TABLE classroom_teacher IF EXISTS;
+DROP TABLE student IF EXISTS;
+DROP TABLE classroom IF EXISTS;
+DROP TABLE teacher IF EXISTS;
