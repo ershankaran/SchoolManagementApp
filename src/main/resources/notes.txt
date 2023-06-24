@@ -236,3 +236,20 @@ get the public url of the cloud instance with host 54.204.211.241
  241.211.204.54.in-addr.arpa domain name pointer ec2-54-204-211-241.compute-1.amazonaws.com
 
 the app url will be ec2-54-204-211-241.compute-1.amazonaws.com:9092
+
+Docker
+  - container is an running version of an images. we cant make changes in the image. we can only create new images with the changes.
+  # docker 
+  # docker pull ubuntu
+  # docker images
+  # docker container run -it ubuntu 
+  - inside ubuntu container
+    #apt get update && apt install openjdk-17-jdk
+  - build new ubuntu image with jdk
+    # docker container commit -a "shankar-sma" 5f3a1cc5c52e ubuntu-jdk-sma
+
+  - create Dockerfile and run the below command in the same folder where the file is present
+   # docker image build -t java-service-from-docker .
+
+   # docker container run java-service-from-docker
+
