@@ -283,3 +283,6 @@ Docker
         - create single instance db with no bkp db , bustable cluster and choose one availability zone. without availability zone, db wont connect.
         - db end point - sma-aws-db-2.clum3jufsr9p.us-east-1.rds.amazonaws.com
     
+       docker image build -t sma-aws-app-2 .
+
+       
