@@ -248,8 +248,27 @@ Docker
   - build new ubuntu image with jdk
     # docker container commit -a "shankar-sma" 5f3a1cc5c52e ubuntu-jdk-sma
 
-  - create Dockerfile and run the below command in the same folder where the file is present
+  - create Dockerfile with the below commands and run the below command in the same folder where the file is present
+      FROM ubuntu:latest
+
+      MAINTAINER shankar-sma
+
+      RUN apt-get update && apt install -y openjdk-17-jdk
+
+      WORKDIR /usr/local/bin
+
+      ADD Java-Docker-Demo.jar .
+
+      ENTRYPOINT ["java","-jar","Java-Docker-Demo.jar"]
+
+     
    # docker image build -t java-service-from-docker .
 
    # docker container run java-service-from-docker
 
+   - run the spring app in docker with expose @ port 8999
+     #docker container run -p 8999:8080 sma-from-docker
+   - run the container in detach mode
+     # #docker container run -d -p 8999:8080 sma-from-docker
+
+     # docker container logs <id>
