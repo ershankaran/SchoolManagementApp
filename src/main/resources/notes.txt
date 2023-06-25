@@ -272,3 +272,14 @@ Docker
      # #docker container run -d -p 8999:8080 sma-from-docker
 
      # docker container logs <id>
+
+     having database and app code inside same container is not a good design idea. we have 
+      to get rds datastore for db setup
+
+    # AWS - VPC 
+      - create subnet with 4 zones (default)
+
+    # AWS - RDS - db 
+        - create single instance db with no bkp db , bustable cluster and choose one availability zone. without availability zone, db wont connect.
+        - db end point - sma-aws-db-2.clum3jufsr9p.us-east-1.rds.amazonaws.com
+    
