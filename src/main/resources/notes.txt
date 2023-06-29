@@ -285,4 +285,7 @@ Docker
     
        docker image build -t sma-aws-app-2 .
 
+
+  Spring profiles - section of the code can be set to run with specific profile with @profile annotation. It's not a recommended approach.
+
        

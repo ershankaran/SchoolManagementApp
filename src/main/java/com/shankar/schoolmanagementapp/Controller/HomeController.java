@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.shankar.schoolmanagementapp.dao.ClassroomRepository;
-import com.shankar.schoolmanagementapp.dao.StudentRepository;
-import com.shankar.schoolmanagementapp.dao.TeacherRepositroy;
 import com.shankar.schoolmanagementapp.dto.ClassroomStudent;
 import com.shankar.schoolmanagementapp.dto.ClassroomTeacher;
 import com.shankar.schoolmanagementapp.entities.Classroom;
 import com.shankar.schoolmanagementapp.entities.Student;
 import com.shankar.schoolmanagementapp.entities.Teacher;
+import com.shankar.schoolmanagementapp.services.ClassromService;
+import com.shankar.schoolmanagementapp.services.StudentService;
+import com.shankar.schoolmanagementapp.services.TeacherService;
 
 @Controller
 public class HomeController {
@@ -26,22 +26,22 @@ public class HomeController {
     private String ver;
     
     @Autowired
-    StudentRepository studentRepo;
+    StudentService studentService;
 
     @Autowired
-    TeacherRepositroy teacherRepo;
+    TeacherService teacherService;
 
     @Autowired
-    ClassroomRepository classroomRepo;
+    ClassromService classroomService;
 
     @GetMapping("/")
     public String displayHomePage(Model model) throws JsonProcessingException{
-        List<Student> students = studentRepo.findAll();
-        List<Teacher> teachers = teacherRepo.findAll();
-        List<Classroom> classrooms = classroomRepo.findAll();
-        List<ClassroomStudent> chartData = classroomRepo.getclassroomStudentCount();
+        List<Student> students = studentService.getAllStudents();
+        List<Teacher> teachers = teacherService.getAllTeachers();
+        List<Classroom> classrooms = classroomService.getAllClassrooms();
+        List<ClassroomStudent> chartData = classroomService.getclassroomStudentCount();
 
-        List<ClassroomTeacher> chartData2 = teacherRepo.getclassroomTeacherCount();
+        List<ClassroomTeacher> chartData2 = teacherService.getTeacherClassroomCount();
         
         ObjectMapper objectMapper = new ObjectMapper();
         String getclassroomStudentCount = objectMapper.writeValueAsString(chartData);

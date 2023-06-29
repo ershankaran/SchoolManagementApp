@@ -9,21 +9,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.shankar.schoolmanagementapp.dao.StudentRepository;
 import com.shankar.schoolmanagementapp.entities.Student;
+import com.shankar.schoolmanagementapp.services.StudentService;
 
 @Controller
 @RequestMapping("/students")
 public class StudentController {
 
     @Autowired
-    StudentRepository studentRepo;
+    StudentService studentService;
 
     @GetMapping
     public String displayStudent(Model model) {
 
         Student student = new Student();
-        List<Student> students = studentRepo.findAll();
+        List<Student> students = studentService.getAllStudents();
         model.addAttribute("students", students);
         model.addAttribute("student", student);
         return "student/student";
@@ -31,7 +31,7 @@ public class StudentController {
 
     @PostMapping("/save")
     public String createStudent(Model model, Student student) {
-        studentRepo.save(student);
+        studentService.saveStudent(student);
         return "redirect:/students";
 
     }

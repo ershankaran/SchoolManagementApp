@@ -10,32 +10,32 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.shankar.schoolmanagementapp.dao.ClassroomRepository;
-import com.shankar.schoolmanagementapp.dao.StudentRepository;
-import com.shankar.schoolmanagementapp.dao.TeacherRepositroy;
 import com.shankar.schoolmanagementapp.entities.Classroom;
 import com.shankar.schoolmanagementapp.entities.Student;
 import com.shankar.schoolmanagementapp.entities.Teacher;
+import com.shankar.schoolmanagementapp.services.ClassromService;
+import com.shankar.schoolmanagementapp.services.StudentService;
+import com.shankar.schoolmanagementapp.services.TeacherService;
 
 @Controller
 @RequestMapping("/classrooms")
 public class ClassroomController {
 
     @Autowired
-    ClassroomRepository classroomRepo;
+    ClassromService classroomService;
 
     @Autowired
-    TeacherRepositroy teacherRepo;
+    TeacherService teacherService;
 
     @Autowired
-    StudentRepository studentRepo;
+    StudentService studentService;
 
     @GetMapping
     public String displayClassroom(Model model){
         Classroom classroom = new Classroom();
-        List<Classroom> classrooms = classroomRepo.findAll();
-        List<Student> students = studentRepo.findAll();
-        List<Teacher> teachers = teacherRepo.findAll();
+        List<Classroom> classrooms = classroomService.getAllClassrooms();
+        List<Student> students = studentService.getAllStudents();
+        List<Teacher> teachers = teacherService.getAllTeachers();
         model.addAttribute("classroom", classroom);
         model.addAttribute("classrooms", classrooms);
         model.addAttribute("teachers", teachers);
@@ -45,13 +45,13 @@ public class ClassroomController {
 
     @PostMapping("/save")
     public String createClassroom(Model model, Classroom classroom, @RequestParam(value="students") List<Integer>studentIds){
-        classroomRepo.save(classroom);
+        classroomService.save(classroom);
 
-        Iterable<Student> classStudents = studentRepo.findAllById(studentIds);
+        Iterable<Student> classStudents = studentService.getStudentsById(studentIds);
 
         for(Student stu : classStudents){
             stu.setClassroom(classroom);
-            studentRepo.save(stu);
+            studentService.saveStudent(stu);
         }
 
         return "redirect:/classrooms";
