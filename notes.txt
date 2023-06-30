@@ -288,4 +288,10 @@ Docker
 
   Spring profiles - section of the code can be set to run with specific profile with @profile annotation. It's not a recommended approach.
 
+  Spring AOP - makes our application more modular , while using the auxiliary services such as logging, security a separate entity .
+             - @Aspect - code which we like to run throughout the application as cross-cutting concern
+             - @Pointcut - specify the place of where to run the cross cutting code
+             - @before ,  @after ,@around - advices given to the method on when to run  
+             - joinpoint - a point during the execution of the program.
+
        
