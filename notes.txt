@@ -295,3 +295,11 @@ Docker
              - joinpoint - a point during the execution of the program.
 
        
+  # logging levels:
+          - TRACE - deepest level of logging
+          - DEBUG - application level of logging
+          - INFO - higher level than debug , gives only overview
+          - WARN - only gives warning.
+      TRACE - includes other three levels
+      DEBUG - includes other two levels
+      INFO - includes WARN too.
