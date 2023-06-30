@@ -1,5 +1,9 @@
 package com.shankar.schoolmanagementapp.logging;
 
+
+import java.util.Arrays;
+
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -20,9 +24,13 @@ public class ApplicationLoggerAspect {
         // empty method to name the location specified in pointcu
     }
 
-    @Before("definePackagePointCuts()")
-    public void log(){
-        log.debug("Debug......................................"); // devices
+    @After("definePackagePointCuts()")
+    public void beforeLog(JoinPoint jp){
+        log.debug("\n \n \n");
+        log.debug("***********Before method Execution************* \n {}.{} () with arguments[s] = {} ",jp.getSignature().getDeclaringTypeName(),
+                                     jp.getSignature().getName(),Arrays.toString(jp.getArgs())); // devices
+        log.debug("------------------------------------------------------------\n");                            
+        
     }
     
 }
