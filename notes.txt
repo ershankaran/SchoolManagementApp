@@ -303,3 +303,15 @@ Docker
       TRACE - includes other three levels
       DEBUG - includes other two levels
       INFO - includes WARN too.
+
+      while adding security dependendency in starters , add the below manually in the pom file
+      <dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+    default user name -  user . password is the generated one in the log as -  Using generated security password: <>
+
+    authentication - logging in to the app , who's logging in
+    authorization  - authorized to view a resource.
