@@ -5,7 +5,7 @@
     <nav th:replace="layout :: sma-body"></nav>
     <h2>Students</h2>
     <div class="container">
-      <form action="/students/save" th:object="${student}" method="POST">
+      <form th:action="@{/students/save}" th:object="${student}" method="POST">
         <input type="text" th:field="${student.studentName}" />
         <input type="email" th:field="${student.studentEmail}" />
         <button type="submit">Create student</button>

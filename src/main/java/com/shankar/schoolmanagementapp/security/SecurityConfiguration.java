@@ -19,47 +19,31 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
 @EnableWebSecurity
+// @EnableWebMvc
 public class SecurityConfiguration {
 
-    // @Autowired
-    // DataSource dataSource;
+    @Autowired
+    DataSource dataSource;
+
+    // @Bean
+    // public DataSource dataSource() {
+    //     return new EmbeddedDatabaseBuilder()
+    //         .setType(EmbeddedDatabaseType.H2)
+    //         .addScript(JdbcDaoImpl.DEFAULT_USER_SCHEMA_DDL_LOCATION)
+    //         .build();
+    // }
 
     @Bean
-    public DataSource dataSource() {
-        return new EmbeddedDatabaseBuilder()
-            .setType(EmbeddedDatabaseType.H2)
-            .addScript(JdbcDaoImpl.DEFAULT_USER_SCHEMA_DDL_LOCATION)
-            .build();
-    }
-
-    @Bean
-    public UserDetailsManager userDetailsService(DataSource dataSource){
-        UserBuilder users = User.withDefaultPasswordEncoder();
-        UserDetails user1 = users
-                    .username("user")
-                    .password("password")
-                    .roles("USER")
-                    .build();
-
-        UserDetails user2 = users
-                    .username("user2")
-                    .password("password2")
-                    .roles("USER")
-                    .build();
-
-        UserDetails user3 = users
-                    .username("user3")
-                    .password("password3")
-                    .roles("USER","ADMIN")
-                    .build();
-
+    public JdbcUserDetailsManager userDetailsService(DataSource dataSource){
+        
         JdbcUserDetailsManager usersFinal = new JdbcUserDetailsManager(dataSource);
-        usersFinal.createUser(user1);
-        usersFinal.createUser(user2);
-        usersFinal.createUser(user3);
+        usersFinal.setUsersByUsernameQuery("select username,password,enabled from user_accounts WHERE username = ?");
+        usersFinal.setAuthoritiesByUsernameQuery("select username,role from user_accounts wHERE username = ?");
+        
 
         return usersFinal;
     }
@@ -67,17 +51,24 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
        return http
-        .csrf(csrf -> csrf.disable())
-        .headers(hdrs -> hdrs.frameOptions().disable())
+        // .csrf(csrf -> csrf.disable())        
+        // .headers(hdrs -> hdrs.frameOptions().sameOrigin())
         .authorizeHttpRequests(auth -> auth
-            .requestMatchers("/classrooms/save").hasRole("ADMIN")
-            .requestMatchers("/students/save").hasRole("ADMIN")
-            .requestMatchers("/teachers/save").hasRole("ADMIN")
-            .requestMatchers("*/*").hasRole("USER")
-            .requestMatchers("/h2-console/**").permitAll()
-            .anyRequest().authenticated()
-        )       
-        .httpBasic(Customizer.withDefaults())
+            .requestMatchers("/classrooms/save").hasAuthority("ROLE_ADMIN")
+            .requestMatchers("/students/save").hasAuthority("ROLE_ADMIN")
+            .requestMatchers("/teachers/save").hasAuthority("ROLE_ADMIN")
+            // .requestMatchers("/classrooms").hasAuthority("USER")
+            // .requestMatchers("/","/**").permitAll()
+            .anyRequest().authenticated()            
+            
+        )               
+        .formLogin( form -> form.permitAll())
+        // .logout(logout -> logout
+        //         .deleteCookies("JSESSIONID")
+        //         .logoutUrl("/logout")
+        //         .logoutSuccessUrl("/logout-success"))        
+             
+        .httpBasic(Customizer.withDefaults())  
         .build();
     }
 
