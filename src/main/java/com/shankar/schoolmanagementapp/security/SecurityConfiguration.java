@@ -57,16 +57,19 @@ public class SecurityConfiguration {
             .requestMatchers("/classrooms/save").hasAuthority("ROLE_ADMIN")
             .requestMatchers("/students/save").hasAuthority("ROLE_ADMIN")
             .requestMatchers("/teachers/save").hasAuthority("ROLE_ADMIN")
-            // .requestMatchers("/classrooms").hasAuthority("USER")
-            // .requestMatchers("/","/**").permitAll()
+            .requestMatchers("/classrooms").hasAnyAuthority("ROLE_ADMIN","ROLE_USER")
+            .requestMatchers("/teachers").hasAnyAuthority("ROLE_ADMIN","ROLE_USER")
+            .requestMatchers("/students").hasAnyAuthority("ROLE_ADMIN","ROLE_USER")
+            .requestMatchers("/home").permitAll()
             .anyRequest().authenticated()            
             
         )               
-        .formLogin( form -> form.permitAll())
+        .formLogin( form -> form.permitAll() )
         // .logout(logout -> logout
         //         .deleteCookies("JSESSIONID")
-        //         .logoutUrl("/logout")
-        //         .logoutSuccessUrl("/logout-success"))        
+        //         .clearAuthentication(true)
+        //         .logoutUrl("/")
+        //         .logoutSuccessUrl("/"))        
              
         .httpBasic(Customizer.withDefaults())  
         .build();
