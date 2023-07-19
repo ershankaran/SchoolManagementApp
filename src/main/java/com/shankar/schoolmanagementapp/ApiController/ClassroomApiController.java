@@ -94,16 +94,16 @@ public class ClassroomApiController {
                     .filter(student -> !existingClassroomStudents.contains(student))
                     .collect(Collectors.toList());
 
-            if (studentsToAdd.size() > 0) {
-                for (Student stu : studentsToAdd) {
-                    stu.setClassroom(classroom);
+            if (studentsToDelete.size() > 0) {
+                for (Student stu : studentsToDelete) {
+                    stu.setClassroom(null);
                     studentRepo.save(stu);
                 }
             }
 
-            if (studentsToDelete.size() > 0) {
-                for (Student stu : studentsToDelete) {
-                    stu.setClassroom(null);
+            if (studentsToAdd.size() > 0) {
+                for (Student stu : studentsToAdd) {
+                    stu.setClassroom(classroom);
                     studentRepo.save(stu);
                 }
             }
@@ -138,10 +138,9 @@ public class ClassroomApiController {
                         studentRepo.save(stu);
                     }
                 }
-                
 
-                classroomRepo.delete(findById);                
-                
+                classroomRepo.delete(findById);
+
             } else {
                 throw new ObjectNotFoundException(classroomId, "Classroom id " + classroomId);
             }

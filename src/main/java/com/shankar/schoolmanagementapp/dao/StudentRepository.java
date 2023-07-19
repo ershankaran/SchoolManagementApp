@@ -12,7 +12,7 @@ public interface StudentRepository extends CrudRepository<Student,Integer>{
     @Override
     public List<Student> findAll();
 
-    
+    //property expressions
     public List<Student> findByClassroom(Classroom classroom);
     
 }
