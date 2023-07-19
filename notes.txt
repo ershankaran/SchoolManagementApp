@@ -336,4 +336,4 @@ Docker
 
 
               for OneToMany and ManyToOne mapping entities, the update and delete has to be handled manually.
-         
+         property expressions is used to find with fields.
