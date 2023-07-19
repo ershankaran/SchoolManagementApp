@@ -315,3 +315,25 @@ Docker
 
     authentication - logging in to the app , who's logging in
     authorization  - authorized to view a resource.
+
+    URL - uniform Resource Locator
+    URI - uniform Resource Identifier
+
+
+    - No verbs suppose to be in API, only should have noun
+    - nouns should be uniform and predictable - we cant have /employees but /project. it should be /project
+    - dont use _ . Use - . always use lowercase
+    Bad api : /employees/retrieveId=123
+              /employees/123.json
+              /employees/123.xml
+              /employees/123?format=json
+    Good Api : /employees
+              /employees/123
+              /employees/123/projects
+              /employees/123/projects/99
+
+              @JsonIgnore is used to eliminate the duplicate of data , by ignoring the marked fields. duplicate is happens due to serialization as entities are intertwined with ManyToMany annotations.
+
+
+              for OneToMany and ManyToOne mapping entities, the update and delete has to be handled manually.
+         

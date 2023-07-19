@@ -1,5 +1,6 @@
 package com.shankar.schoolmanagementapp.entities;
 
+import java.io.Serializable;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -15,7 +16,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 
 @Entity
-public class Classroom {
+public class Classroom implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "classroom_seq")
@@ -24,10 +25,11 @@ public class Classroom {
     private String classroomName;
     private String classroomEmail;
 
-    @OneToMany(mappedBy = "classroom")
+    @OneToMany(mappedBy = "classroom",cascade = {CascadeType.DETACH ,CascadeType.MERGE,CascadeType.REFRESH,CascadeType.PERSIST},fetch = FetchType.LAZY)
+    // @JsonManagedReference
     private List<Student> students;
 
-    @ManyToMany(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH,CascadeType.PERSIST},
+    @ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH ,CascadeType.REFRESH},
     fetch = FetchType.LAZY)
     @JoinTable( name="classroom_teacher",
     joinColumns = @JoinColumn(name="classroom_id"),
@@ -77,7 +79,7 @@ public class Classroom {
         return students;
     }
 
-    public void setStudents(List<Student> students) {
+    private void setStudents(List<Student> students) {
         this.students = students;
     }
 

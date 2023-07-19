@@ -6,6 +6,8 @@ target/
 mvnw
 mvnw.cmd
 maven-wrapper.properties
+*log
+
 
 ### STS ###
 .apt_generated
