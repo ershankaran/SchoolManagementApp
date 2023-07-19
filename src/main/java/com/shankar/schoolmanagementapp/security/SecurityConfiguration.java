@@ -6,20 +6,11 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.User.UserBuilder;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
-import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
 @EnableWebSecurity
@@ -50,26 +41,28 @@ public class SecurityConfiguration {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+
+
        return http
-        // .csrf(csrf -> csrf.disable())        
+        .csrf(csrf -> csrf.disable())        
         // .headers(hdrs -> hdrs.frameOptions().sameOrigin())
         .authorizeHttpRequests(auth -> auth
             .requestMatchers("/classrooms/save").hasAuthority("ROLE_ADMIN")
             .requestMatchers("/students/save").hasAuthority("ROLE_ADMIN")
             .requestMatchers("/teachers/save").hasAuthority("ROLE_ADMIN")
+            .requestMatchers("/register").hasAnyAuthority("ROLE_ADMIN")
             .requestMatchers("/classrooms").hasAnyAuthority("ROLE_ADMIN","ROLE_USER")
             .requestMatchers("/teachers").hasAnyAuthority("ROLE_ADMIN","ROLE_USER")
             .requestMatchers("/students").hasAnyAuthority("ROLE_ADMIN","ROLE_USER")
-            .requestMatchers("/home").permitAll()
+            .requestMatchers("/home","*/**").permitAll()
             .anyRequest().authenticated()            
             
         )               
         .formLogin( form -> form.permitAll() )
         // .logout(logout -> logout
-        //         .deleteCookies("JSESSIONID")
-        //         .clearAuthentication(true)
-        //         .logoutUrl("/")
-        //         .logoutSuccessUrl("/"))        
+        //         .addLogoutHandler(clearSiteData)
+        //         .logoutUrl("/appLogout")
+        //         .logoutSuccessUrl("/appLogout"))
              
         .httpBasic(Customizer.withDefaults())  
         .build();

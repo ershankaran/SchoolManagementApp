@@ -1,5 +1,9 @@
 package com.shankar.schoolmanagementapp.entities;
 
+import java.io.Serializable;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -11,7 +15,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 
 @Entity
-public class Student {
+public class Student implements Serializable{
     
 
     @Id
@@ -20,9 +24,10 @@ public class Student {
     private int studentId;
     private String studentName;
     private String studentEmail;
-    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH,CascadeType.PERSIST},
-    fetch = FetchType.LAZY)
+    @ManyToOne(cascade  = {CascadeType.DETACH ,CascadeType.MERGE,CascadeType.REFRESH,CascadeType.PERSIST})
     @JoinColumn(name="classroom_id")
+    // @JsonBackReference
+    @JsonIgnore
     private Classroom classroom;
 
 

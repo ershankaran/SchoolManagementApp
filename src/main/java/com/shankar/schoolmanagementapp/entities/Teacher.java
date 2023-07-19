@@ -2,6 +2,8 @@ package com.shankar.schoolmanagementapp.entities;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -23,11 +25,12 @@ public class Teacher {
     private String teacherName;
     private String teacherEmail;
     
-    @ManyToMany(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH,CascadeType.PERSIST},
+    @ManyToMany(cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH},
     fetch = FetchType.LAZY)
     @JoinTable( name="classroom_teacher",
     joinColumns = @JoinColumn(name="teacher_id"),
     inverseJoinColumns =  @JoinColumn(name="classroom_id"))
+    @JsonIgnore
     private List<Classroom> classroom;
 
     public Teacher() {

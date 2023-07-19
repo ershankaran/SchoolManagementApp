@@ -7,6 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.shankar.schoolmanagementapp.dto.ClassroomStudent;
 import com.shankar.schoolmanagementapp.entities.Classroom;
+import com.shankar.schoolmanagementapp.entities.Student;
 
 public interface ClassroomRepository extends CrudRepository<Classroom , Integer> {
 
@@ -19,5 +20,7 @@ public interface ClassroomRepository extends CrudRepository<Classroom , Integer>
     +"where c.classroom_id = s.classroom_id "
     +"group by classroomName"  )
     public List<ClassroomStudent> getclassroomStudentCount();
+
+   
     
 }
