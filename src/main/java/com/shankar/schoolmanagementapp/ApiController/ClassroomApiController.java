@@ -1,12 +1,12 @@
 package com.shankar.schoolmanagementapp.ApiController;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -18,10 +18,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.shankar.schoolmanagementapp.dao.ClassroomRepository;
 import com.shankar.schoolmanagementapp.dao.StudentRepository;
 import com.shankar.schoolmanagementapp.dao.TeacherRepositroy;
-import com.shankar.schoolmanagementapp.dto.ClassroomStudent;
 import com.shankar.schoolmanagementapp.entities.Classroom;
 import com.shankar.schoolmanagementapp.entities.Student;
 import com.shankar.schoolmanagementapp.entities.Teacher;
+
+import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -53,14 +54,14 @@ public class ClassroomApiController {
     @PostMapping(consumes = { "application/json" })
     @ResponseStatus(HttpStatus.CREATED)
     // @PostMapping
-    public @ResponseBody Classroom createClassroom(@RequestBody Classroom classroom) {
+    public @ResponseBody Classroom createClassroom(@RequestBody @Valid Classroom classroom) {
 
         return classroomRepo.save(classroom);
     }
 
     @PutMapping(consumes = { "application/json" })
     @ResponseStatus(HttpStatus.OK)
-    public Classroom updateClassroom(@RequestBody Classroom classroom) {
+    public Classroom updateClassroom(@RequestBody @Valid Classroom classroom) {
         List<Student> classStudents = classroom.getStudents();
 
         for (Student stu : classStudents) {
@@ -72,7 +73,7 @@ public class ClassroomApiController {
     }
 
     @PatchMapping(path = "/{id}", consumes = "application/json")
-    public Classroom patchUpdateClassroom(@PathVariable("id") Integer classroomId, @RequestBody Classroom classroom) {
+    public Classroom patchUpdateClassroom(@PathVariable("id") Integer classroomId, @RequestBody @Valid Classroom classroom) {
         Classroom classroom2 = classroomRepo.findById(classroomId).get();
 
         if (classroom.getClassroomEmail() != null) {

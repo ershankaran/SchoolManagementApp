@@ -3,7 +3,10 @@ package com.shankar.schoolmanagementapp.entities;
 import java.io.Serializable;
 import java.util.List;
 
+import org.springframework.lang.NonNull;
+
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -14,6 +17,9 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Classroom implements Serializable{
@@ -22,7 +28,14 @@ public class Classroom implements Serializable{
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "classroom_seq")
     @SequenceGenerator(name = "classroom_seq",sequenceName = "classroom_seq", allocationSize = 1)
     private int classroomId;
+
+    @NotNull
+    @Size(min=2,max=50)
     private String classroomName;
+
+    @NotNull
+    @Email
+    @Column(unique = true)
     private String classroomEmail;
 
     @OneToMany(mappedBy = "classroom",cascade = {CascadeType.DETACH ,CascadeType.MERGE,CascadeType.REFRESH,CascadeType.PERSIST},fetch = FetchType.LAZY)
