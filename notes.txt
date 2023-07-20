@@ -338,4 +338,6 @@ Docker
               for OneToMany and ManyToOne mapping entities, the update and delete has to be handled manually.
          property expressions is used to find with fields.
 
-         jakarta.validation.constraints.*  annotations (@notnull,@email) are at client level whereas jakarta.persistence.* at database level
+         jakarta.validation.constraints.*  annotations (@notnull,@email) are at client level whereas jakarta.persistence.* at database level . This constraint is not working here as we set the auto-ddl as none in properties.
+
+         spring.jpa.properties.jakarta.persistence.validation.mode=none prevents the null pointer exception on repo and in turn double valiation call and 

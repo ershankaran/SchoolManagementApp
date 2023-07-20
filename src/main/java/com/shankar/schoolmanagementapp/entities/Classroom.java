@@ -3,10 +3,9 @@ package com.shankar.schoolmanagementapp.entities;
 import java.io.Serializable;
 import java.util.List;
 
-import org.springframework.lang.NonNull;
+import com.shankar.schoolmanagementapp.Validation.UniqueValue;
 
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -35,7 +34,7 @@ public class Classroom implements Serializable{
 
     @NotNull
     @Email
-    @Column(unique = true)
+    @UniqueValue
     private String classroomEmail;
 
     @OneToMany(mappedBy = "classroom",cascade = {CascadeType.DETACH ,CascadeType.MERGE,CascadeType.REFRESH,CascadeType.PERSIST},fetch = FetchType.LAZY)
