@@ -4,11 +4,12 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
 import com.shankar.schoolmanagementapp.dto.ClassroomTeacher;
 import com.shankar.schoolmanagementapp.entities.Teacher;
 
-public interface TeacherRepositroy extends CrudRepository<Teacher,Integer>{
+public interface TeacherRepositroy extends CrudRepository<Teacher,Integer>, PagingAndSortingRepository<Teacher,Integer>{
 
     @Override
     public List<Teacher> findAll();

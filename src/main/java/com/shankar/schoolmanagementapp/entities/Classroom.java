@@ -3,6 +3,8 @@ package com.shankar.schoolmanagementapp.entities;
 import java.io.Serializable;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.shankar.schoolmanagementapp.Validation.UniqueValue;
 
 import jakarta.persistence.CascadeType;
@@ -47,7 +49,7 @@ public class Classroom implements Serializable{
     joinColumns = @JoinColumn(name="classroom_id"),
     inverseJoinColumns =  @JoinColumn(name="teacher_id"))
     private List<Teacher> teachers;
-
+    @JsonIgnore
     public Classroom() {
     }
 
