@@ -26,7 +26,7 @@ public class Student implements Serializable{
     @ManyToOne(cascade  = {CascadeType.DETACH ,CascadeType.MERGE,CascadeType.REFRESH,CascadeType.PERSIST})
     @JoinColumn(name="classroom_id")
     // @JsonBackReference
-    // @JsonIgnore()
+    @JsonIgnore
     private Classroom classroom;
 
 
