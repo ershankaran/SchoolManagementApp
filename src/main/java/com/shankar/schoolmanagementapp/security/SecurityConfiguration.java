@@ -54,6 +54,7 @@ public class SecurityConfiguration {
             .requestMatchers("/classrooms").hasAnyAuthority("ROLE_ADMIN","ROLE_USER")
             .requestMatchers("/teachers").hasAnyAuthority("ROLE_ADMIN","ROLE_USER")
             .requestMatchers("/students").hasAnyAuthority("ROLE_ADMIN","ROLE_USER")
+            // .requestMatchers("/classrooms").permitAll()
             .requestMatchers("/home","*/**").permitAll()
             .anyRequest().authenticated()            
             

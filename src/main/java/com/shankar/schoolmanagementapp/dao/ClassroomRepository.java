@@ -5,10 +5,12 @@ import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import com.shankar.schoolmanagementapp.dto.ClassroomStudent;
 import com.shankar.schoolmanagementapp.entities.Classroom;
 
+@RepositoryRestResource(collectionResourceRel = "apiClassrooms",path = "apiClassrooms")
 public interface ClassroomRepository extends CrudRepository<Classroom,Integer>,PagingAndSortingRepository<Classroom , Integer> {
 
     @Override
