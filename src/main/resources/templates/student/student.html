@@ -5,12 +5,9 @@
     <nav th:replace="layout :: sma-body"></nav>
     <h2>Students</h2>
     <div class="container">
-      <form th:action="@{/students/save}" th:object="${student}" method="POST">
-        <input type="text" th:field="${student.studentName}" />
-        <input type="email" th:field="${student.studentEmail}" />
-        <button type="submit">Create student</button>
-      </form>
-    </div>
+      <a th:href="@{/students/new}" class="btn btn-primary btn-sm mb-3"
+      >  Add Student </a
+    > 
 
     <br />
     <br />
@@ -20,12 +17,26 @@
           <tr>
             <th>Student Name</th>
             <th>Student Email</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
           <tr th:each=" student : ${students}">
             <td th:text="${student.studentName}"></td>
             <td th:text="${student.studentEmail}"></td>
+            <td>
+              <a
+                th:href="@{/students/update(id=${student.studentId})}"
+                class="btn btn-info btn-sm"
+                >Update</a
+              >
+              <a
+                th:href="@{/students/delete(id=${student.studentId})}"
+                class="btn btn-danger btn-sm"
+                onClick="if(!(confirm('Are you sure to delete the Student?'))) return false"
+                >Delete</a
+              >
+            </td>
           </tr>
         </tbody>
       </table>

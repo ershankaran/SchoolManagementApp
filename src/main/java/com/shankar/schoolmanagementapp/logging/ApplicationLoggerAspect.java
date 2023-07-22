@@ -34,7 +34,7 @@ public class ApplicationLoggerAspect {
         try {
             o = jp.proceed();
         } catch (Throwable e) {
-            // TODO Auto-generated catch block
+            
             e.printStackTrace();
         }
 

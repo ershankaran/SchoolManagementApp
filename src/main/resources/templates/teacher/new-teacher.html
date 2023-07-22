@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <nav th:replace="layout :: sma-header"></nav>
+  <body>
+    <nav th:replace="layout :: sma-body"></nav>
+    <h2>Teacher</h2>
+    <div class="container">
+      <form th:action="@{/teachers/save}" th:object="${teacher}" method="POST">
+        <!-- hidden field is used to bind the teacher when clicked for update -->
+        <input type="hidden" th:field="${teacher.teacherId}" />
+        <input type="text" th:field="${teacher.teacherName}" />
+        <input type="email" th:field="${teacher.teacherEmail}" />
+        <button type="submit">Create teacher</button>
+      </form>
+    </div>
+  </body>
+</html>
