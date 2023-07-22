@@ -3,7 +3,6 @@ package com.shankar.schoolmanagementapp.entities;
 import java.io.Serializable;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.shankar.schoolmanagementapp.Validation.UniqueValue;
 
@@ -91,10 +90,6 @@ public class Classroom implements Serializable{
 
     public List<Student> getStudents() {
         return students;
-    }
-
-    private void setStudents(List<Student> students) {
-        this.students = students;
     }
 
     public List<Teacher> getTeachers() {

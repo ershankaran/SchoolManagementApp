@@ -1,8 +1,6 @@
 package com.shankar.schoolmanagementapp.services;
 
 import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +14,7 @@ public class ClassromService {
     @Autowired
     ClassroomRepository classroomRepo;
 
-    public Classroom save(Classroom clsrm){
+    public Classroom saveClassroom(Classroom clsrm){
         return classroomRepo.save(clsrm);
     }
 
@@ -24,12 +22,20 @@ public class ClassromService {
         return  classroomRepo.findAll();
     }
 
-    public Optional<Classroom> getClassroom(Classroom clsrm){
-        return classroomRepo.findById(clsrm.getClassroomId());
+    public Classroom getClassroom(Classroom clsrm){
+        return classroomRepo.findById(clsrm.getClassroomId()).get();
+    }
+
+    public Classroom getClassroomById(Integer classroomId){
+        return classroomRepo.findById(classroomId).get();
     }
 
     public List<ClassroomStudent> getclassroomStudentCount(){
         return classroomRepo.getclassroomStudentCount();
+    }
+
+    public void deleteClassroom(Classroom classroom){
+         classroomRepo.delete(classroom);
     }
 
 

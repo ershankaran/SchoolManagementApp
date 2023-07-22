@@ -21,5 +21,10 @@ public interface TeacherRepositroy extends CrudRepository<Teacher,Integer>, Pagi
     +"where c.classroom_id = t.classroom_id "
     +"group by classroomName"  )
     public List<ClassroomTeacher> getclassroomTeacherCount();
+
+     @Query(nativeQuery = true , value = "select  t.teacher_id as teachersList "
+    +" from classroom_teacher t "
+    +" where t.classroom_id = ?1 "  )
+    public List<Integer> getclassroomTeacherList(Integer classroomId);
     
 }
