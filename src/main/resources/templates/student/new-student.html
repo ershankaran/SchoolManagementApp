@@ -8,9 +8,17 @@
       <form th:action="@{/students/save}" th:object="${student}" method="POST">
         <!-- hidden field is used to bind the teacher when clicked for update -->
         <input type="hidden" th:field="${student.studentId}" />
-        <input type="text" th:field="${student.studentName}" />
+        <div class="form-group-row" >
+          <label  class="form-label">Student Name</label>
+        <input type="text" id="studentName" th:field="${student.studentName}" />
+        <span style="color: red;"  th:if="${#fields.errors('studentName')}" th:errors="${student.studentName}"> </span>  
+      </div>
+        <div class="form-group-row" >
+          <label   class="form-label">Student Email</label>
         <input type="email" th:field="${student.studentEmail}" />
-        <button type="submit">Create student</button>
+        <span style="color: red;"  th:if="${#fields.errors('studentEmail')}" th:errors="${student.studentEmail}"> </span>  
+      </div>
+        <button type="submit"  class="btn btn-primary">Create student</button>
       </form>
     </div>
   </body>

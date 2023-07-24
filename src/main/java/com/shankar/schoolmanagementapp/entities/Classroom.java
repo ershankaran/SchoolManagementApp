@@ -18,6 +18,8 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
@@ -29,11 +31,11 @@ public class Classroom implements Serializable{
     @SequenceGenerator(name = "classroom_seq",sequenceName = "classroom_seq", allocationSize = 1)
     private int classroomId;
 
-    @NotNull
+    @NotBlank
     @Size(min=2,max=50)
     private String classroomName;
 
-    @NotNull
+    @NotBlank
     @Email
     @UniqueValue
     private String classroomEmail;

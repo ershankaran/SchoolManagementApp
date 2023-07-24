@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.shankar.schoolmanagementapp.entities.Student;
 import com.shankar.schoolmanagementapp.services.StudentService;
+
+import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/students")
@@ -38,7 +41,11 @@ public class StudentController {
     }
     
     @PostMapping("/save")
-    public String createStudent(Model model, Student student) {
+    public String createStudent(Model model, @Valid Student student, Errors errors) {
+        if(errors.hasErrors()){
+            return "student/new-student";
+        }
+        
         studentService.saveStudent(student);
         return "redirect:/students";
 
