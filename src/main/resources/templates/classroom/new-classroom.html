@@ -12,24 +12,43 @@
       >
         <!-- hidden field is used to bind the clasroom when clicked for update -->
         <input type="hidden" th:field="${classroom.classroomId}" />
-        <input type="text" th:field="${classroom.classroomName}" />
-        <input type="email" th:field="${classroom.classroomEmail}" />
-        <select th:field="*{students}" multiple="multiple">
-          <option
-            th:each=" student : ${students}"
-            th:value="${student.studentId}"
-            th:text="${student.studentName}"
-          ></option>
-        </select>
-        <select th:field="*{teachers}" multiple="multiple">
-          <option
-            th:each=" teacher : ${teachers}"
-            th:value="${teacher.teacherId}"
-            th:text="${teacher.teacherName}"
-          ></option>
-        </select>
+        <div class="form-group-row" >
+          <label  class="form-label">Classroom Name</label>
+          <input type="text" placeholder="Enter Classroom name"   th:field="${classroom.classroomName}" />
+          <span style="color: red;"  th:if="${#fields.errors('classroomName')}" th:errors="${classroom.classroomName}"> </span>  
 
-        <button type="submit">Enter Classroom</button>
+        </div>
+        <div class="form-group-row">
+          <label  class="form-label">Classroom Email</label>
+          <input type="email" placeholder="Enter Classroom email" th:field="${classroom.classroomEmail}" />
+          <span style="color: red;"  th:if="${#fields.errors('classroomEmail')}" th:errors="${classroom.classroomEmail}"> </span>  
+
+        </div>
+        <div class="form-group-row">
+          <label for="classroomName" id="clsStudents" class="form-label">Students to add</label>
+          <select th:field="*{students}" multiple="multiple" id="clsStudents">
+            <option
+              th:each=" student : ${students}"
+              th:value="${student.studentId}"
+              th:text="${student.studentName}"
+            ></option>
+          </select>
+
+        </div>
+        <div class="form-group-row">
+          <label for="classroomName"  class="form-label">Teachers to add</label>
+          <select th:field="*{teachers}" id="clsTeachers" multiple="multiple">
+            <option
+              th:each=" teacher : ${teachers}"
+              th:value="${teacher.teacherId}"
+              th:text="${teacher.teacherName}"
+            ></option>
+          </select>
+
+        </div>
+        <div class="form-group-row">
+          <button type="submit"  class="btn btn-primary" >Enter Classroom</button>
+        </div>
       </form>
     </div>
   </body>
