@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.shankar.schoolmanagementapp.dto.TimeChartData;
 import com.shankar.schoolmanagementapp.entities.Classroom;
 import com.shankar.schoolmanagementapp.entities.Student;
 import com.shankar.schoolmanagementapp.entities.Teacher;
@@ -69,6 +72,7 @@ public class ClassroomController {
         Iterable<Student> classStudents = studentService.getStudentsById(studentIds);
 
         for (Student stu : classStudents) {
+            System.out.println(stu.getStudentName());
             stu.setClassroom(classroom);
             studentService.saveStudent(stu);
         }
@@ -113,6 +117,17 @@ public class ClassroomController {
         classroomService.deleteClassroom(existingClassroom);
 
         return "redirect:/classrooms";
+    }
+
+    @GetMapping("/timelines")
+    public String displayClassroomTimeLines(Model model) throws JsonProcessingException{
+        List<TimeChartData> timeData = classroomService.getTimeData();
+        ObjectMapper objectMapper = new ObjectMapper();
+        String classroomTimeList = objectMapper.writeValueAsString(timeData);
+        System.out.println(classroomTimeList);
+        model.addAttribute("classroomTimeList", classroomTimeList);
+
+        return "classroom/classroom-timelines";
     }
 
 }

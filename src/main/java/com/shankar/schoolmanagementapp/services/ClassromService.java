@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.shankar.schoolmanagementapp.dao.ClassroomRepository;
 import com.shankar.schoolmanagementapp.dto.ClassroomStudent;
+import com.shankar.schoolmanagementapp.dto.TimeChartData;
 import com.shankar.schoolmanagementapp.entities.Classroom;
 
 @Service
@@ -36,6 +37,10 @@ public class ClassromService {
 
     public void deleteClassroom(Classroom classroom){
          classroomRepo.delete(classroom);
+    }
+
+    public List<TimeChartData> getTimeData(){
+        return classroomRepo.getTimeData();
     }
 
 

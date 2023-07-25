@@ -8,6 +8,7 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import com.shankar.schoolmanagementapp.dto.ClassroomStudent;
+import com.shankar.schoolmanagementapp.dto.TimeChartData;
 import com.shankar.schoolmanagementapp.entities.Classroom;
 
 @RepositoryRestResource(collectionResourceRel = "apiClassrooms",path = "apiClassrooms")
@@ -25,6 +26,11 @@ public interface ClassroomRepository extends CrudRepository<Classroom,Integer>,P
 
 
     public Classroom findByClassroomEmail(String value);
+
+    @Query(nativeQuery = true,value = "Select classroom_name as classroomName ,"
+    +" classroom_start_date as classroomStartDate , classroom_end_date as classroomEndDate "
+    +" from CLASSROOM")
+    public List<TimeChartData> getTimeData();
 
    
     
