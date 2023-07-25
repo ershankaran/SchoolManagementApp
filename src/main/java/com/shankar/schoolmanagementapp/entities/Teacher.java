@@ -17,8 +17,6 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -38,7 +36,7 @@ public class Teacher {
     @UniqueValue
     private String teacherEmail;
     
-    @ManyToMany(cascade = {CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH},
+    @ManyToMany(cascade =  {CascadeType.PERSIST,CascadeType.DETACH ,CascadeType.REFRESH,CascadeType.REMOVE},
     fetch = FetchType.LAZY)
     @JoinTable( name="classroom_teacher",
     joinColumns = @JoinColumn(name="teacher_id"),

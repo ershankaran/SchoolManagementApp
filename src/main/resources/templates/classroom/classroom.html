@@ -17,6 +17,8 @@
           <tr>
             <th>Classroom Name</th>
             <th>Classroom Email</th>
+            <th>Start Date</th>
+            <th>End Date</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -24,6 +26,8 @@
           <tr th:each=" classroom : ${classrooms}">
             <td th:text="${classroom.classroomName}"></td>
             <td th:text="${classroom.classroomEmail}"></td>
+            <td th:text="${classroom.classroomStartDate}"></td>
+            <td th:text="${classroom.classroomEndDate}"></td>
             <td>
               <a
                 th:href="@{/classrooms/update(id=${classroom.classroomId})}"

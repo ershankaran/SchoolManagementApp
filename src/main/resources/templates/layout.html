@@ -8,8 +8,13 @@
     integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
     crossorigin="anonymous"
   />
+  <link rel="stylesheet" th:href="@{/css/style.css}">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <title>Sma</title>
+	 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	  <link rel="stylesheet" href="/resources/demos/style.css">
+	  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <title>School Management Application</title>
 </head>
 <body>
   <nav
@@ -43,6 +48,9 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" th:href="@{/students}">Student</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/classrooms/timelines}">Classroom Timelines</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" th:href="@{/register}">Register new user</a>

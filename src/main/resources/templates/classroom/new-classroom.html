@@ -44,8 +44,19 @@
               th:text="${teacher.teacherName}"
             ></option>
           </select>
-
         </div>
+        <div class="form-group-row">
+          <label >Start Date</label>
+          <input type="text" id="dp3" class="mb-4 col-2 col-xs-4" value="Start date" th:field="${classroom.classroomStartDate}" >
+        </div>
+        <div class="form-group-row">
+          <label >End Date</label>
+          <input type="text" id="dp4" class="mb-4 col-2 col-xs-4" value="End date" th:field="${classroom.classroomEndDate}" >
+        </div>
+        <script type="text/javascript">
+	      	$('#dp3').datepicker();
+	      	$('#dp4').datepicker();
+	      </script>
         <div class="form-group-row">
           <button type="submit"  class="btn btn-primary" >Enter Classroom</button>
         </div>

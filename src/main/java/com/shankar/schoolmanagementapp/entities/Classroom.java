@@ -1,11 +1,10 @@
 package com.shankar.schoolmanagementapp.entities;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.shankar.schoolmanagementapp.Validation.UniqueValue;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -19,7 +18,6 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
@@ -37,34 +35,39 @@ public class Classroom implements Serializable{
 
     @NotBlank
     @Email
-    @UniqueValue
+    // @UniqueValue
     private String classroomEmail;
 
-    @OneToMany(mappedBy = "classroom",cascade = {CascadeType.DETACH ,CascadeType.MERGE,CascadeType.REFRESH,CascadeType.PERSIST},fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "classroom",cascade = {CascadeType.DETACH ,CascadeType.REFRESH,CascadeType.PERSIST},fetch = FetchType.LAZY)
     // @JsonManagedReference
     private List<Student> students;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH ,CascadeType.REFRESH},
+    @ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.DETACH ,CascadeType.REFRESH,CascadeType.REMOVE},
     fetch = FetchType.LAZY)
     @JoinTable( name="classroom_teacher",
     joinColumns = @JoinColumn(name="classroom_id"),
     inverseJoinColumns =  @JoinColumn(name="teacher_id"))
     private List<Teacher> teachers;
+
+    @NotNull
+    private Date classroomStartDate;
+    @NotNull
+    private Date classroomEndDate;
+
     @JsonIgnore
     public Classroom() {
     }
 
-    public Classroom(String classroomName, String classroomEmail, List<Student> students, List<Teacher> teachers) {
+     
+
+
+    public Classroom(@NotBlank @Size(min = 2, max = 50) String classroomName, @NotBlank @Email String classroomEmail) {
         this.classroomName = classroomName;
         this.classroomEmail = classroomEmail;
-        this.students = students;
-        this.teachers = teachers;
     }
 
-    public Classroom(String classroomName, String classroomEmail) {
-        this.classroomName = classroomName;
-        this.classroomEmail = classroomEmail;
-    }
+
+
 
     public int getClassroomId() {
         return classroomId;
@@ -100,6 +103,26 @@ public class Classroom implements Serializable{
 
     public void setTeachers(List<Teacher> teachers) {
         this.teachers = teachers;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
+    }
+
+    public Date getClassroomStartDate() {
+        return classroomStartDate;
+    }
+
+    public void setClassroomStartDate(Date classroomStartDate) {
+        this.classroomStartDate = classroomStartDate;
+    }
+
+    public Date getClassroomEndDate() {
+        return classroomEndDate;
+    }
+
+    public void setClassroomEndDate(Date classroomEndDate) {
+        this.classroomEndDate = classroomEndDate;
     }
 
 
